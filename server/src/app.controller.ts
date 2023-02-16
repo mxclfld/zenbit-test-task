@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { AppService } from './app.service';
 import { FeedbackService } from './feedback/feedback.service';
 import { Feedback as FeedbackModel } from '@prisma/client';
 import { CreateFeedbackDto } from './feedback/create-feedback.dto';
