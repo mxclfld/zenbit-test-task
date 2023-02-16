@@ -40,6 +40,9 @@
 /server/yarn-error.log*
 /server/lerna-debug.log*
 
+# environment variables
+/server/.env
+
 # OS
 /server/.DS_Store
 

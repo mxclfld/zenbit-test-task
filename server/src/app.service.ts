@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Feedback } from '@prisma/client';
 
 @Injectable()
 export class AppService {
