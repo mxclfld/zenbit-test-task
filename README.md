@@ -23,3 +23,6 @@ Then, edit docker-compose.yml file so that `POSTGRES_USER`, `POSTGRES_PASSWORD` 
 Then, both in `server` and `client` directories, run `yarn` or `npm install` to install dependencies.
 
 To run front-end use `yarn dev` and to run backend run `yarn start:dev`.
+
+# Application frontend
+![image](https://user-images.githubusercontent.com/82830327/219713028-07e03c4e-0941-4e9e-ac90-6df745447844.png)
