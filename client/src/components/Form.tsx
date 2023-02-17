@@ -1,60 +1,72 @@
 import React, { useState } from 'react';
-import { useForm } from '../hooks/useForm';
 import Input from './Input';
 import { StyledButton } from './styles/Button.styled';
 import { Error } from './styles/Error.styled';
 import TextArea from './TextArea';
+import axios from 'axios';
+import { validateForm } from './utils/validateForm';
+import Modal from './Modal';
 
 const Form = () => {
-  const [values, handleChange] = useForm({ name: '', email: '', message: '' });
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
-  const handleError = (errorMessage: string) => {
-    setError(errorMessage);
-    setTimeout(() => setError(''), 5000);
-  };
-
-  const validateForm = (name: string, email: string, message: string) => {
-    if (!(name && email && message)) {
-      handleError('All fields are required!');
-    } else if (name.length < 3) {
-      setError('Your name should be at least 3 characters long.');
-    } else if (message.length < 30) {
-      setError('Your message should be at least 30 characters long.');
-    } else {
-      setError('');
-    }
+  const clearForm = () => {
+    setName('');
+    setEmail('');
+    setMessage('');
   };
 
   const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const { name, email, message } = values;
-    validateForm(name, email, message);
+    if (validateForm(name, email, message, setError)) {
+      axios
+        .post('http://localhost:3000/feedback', {
+          name,
+          email,
+          message,
+        })
+        .then(() => {
+          setIsSuccess(true);
+          clearForm();
+        });
+    }
   };
+
   return (
     <form>
       <Input
         name="name"
         placeholder="Your name*"
-        value={values.name}
-        handleChange={handleChange}
+        value={name}
+        handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setName(e.target.value)
+        }
       />
       <Input
         name="email"
         placeholder="Your e-mail*"
-        value={values.email}
-        handleChange={handleChange}
+        value={email}
+        handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setEmail(e.target.value)
+        }
       />
       <TextArea
         name="message"
         placeholder="Your message*"
-        value={values.message}
-        handleChange={handleChange}
+        value={message}
+        handleChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setMessage(e.target.value)
+        }
       />
       {error && <Error>{error}</Error>}
       <StyledButton type="submit" onClick={onButtonClick}>
         Send message
       </StyledButton>
+      {isSuccess && <Modal setIsSuccess={setIsSuccess} />}
     </form>
   );
 };
