@@ -4,8 +4,22 @@ import {
   FaFacebookF,
   FaPinterestP,
 } from 'react-icons/fa';
-import { StyledSocialMedia } from './styles/SocialMedia.styled';
-import { Link } from './styles/Link.styled';
+import styled from 'styled-components';
+
+const StyledSocialMedia = styled.div`
+  display: flex;
+  margin-left: 10rem;
+  gap: 26px;
+
+  @media (min-width: 768px) {
+    margin-left: 21rem;
+  }
+`;
+
+const Link = styled.a`
+  text-decoration: none;
+  color: black;
+`;
 
 const SocialMedia = () => {
   return (

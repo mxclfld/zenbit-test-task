@@ -4,7 +4,7 @@ import { StyledButton } from './styles/Button.styled';
 import { Error } from './styles/Error.styled';
 import TextArea from './TextArea';
 import axios from 'axios';
-import { validateForm } from './utils/validateForm';
+import { validateForm } from '../utils/validateForm';
 import Modal from './Modal';
 
 const Form = () => {
