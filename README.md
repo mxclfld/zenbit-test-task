@@ -25,4 +25,4 @@ Then, both in `server` and `client` directories, run `yarn` or `npm install` to 
 To run front-end use `yarn dev` and to run backend run `yarn start:dev`.
 
 # Application frontend
-![image](https://user-images.githubusercontent.com/82830327/219713028-07e03c4e-0941-4e9e-ac90-6df745447844.png)
+![image](https://user-images.githubusercontent.com/82830327/219713560-e70db557-02a4-4a93-89f7-68e07c22eb81.png)
