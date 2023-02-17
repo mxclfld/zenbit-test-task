@@ -14,6 +14,7 @@ To start this application manually follow these instructions:
 There, you need to create .env file and fill in DATABASE_URL to connect to.
 
 `touch .env`
+
 `echo "DATABASE_URL = \"postgresql://janedoe:mypassword@localhost:5432/mydb?schema=sample\"" > .env`
 
 Where `janedoe` - username for Postgres user, `mypassword` - password for it, `mydb` - database to work with.
